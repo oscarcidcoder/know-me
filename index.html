@@ -1,1 +1,713 @@
-<h1>Profile Repository</h1>
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oscar Cid — Senior Mobile Engineer</title>
+<meta name="description" content="Oscar Cid, Senior Mobile Engineer. +14 años construyendo producto móvil en Android, Kotlin y Flutter. Arquitecturas limpias, R&D y AI-assisted development.">
+<meta name="author" content="Oscar Cid">
+<meta name="theme-color" content="#0b2239">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Oscar Cid — Senior Mobile Engineer">
+<meta property="og:description" content="+14 años construyendo producto móvil en Android, Kotlin y Flutter.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e7c86'/%3E%3Ctext x='32' y='43' font-family='Segoe UI,Arial' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3EOC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>
+  // set theme before paint (no flash of wrong theme)
+  (function () {
+    document.documentElement.classList.add('js');
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = saved || sys;
+  })();
+</script>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f4f8fa;
+    --surface: #ffffff;
+    --ink: #0b2239;
+    --ink-2: #33485a;
+    --ink-3: #6b8091;
+    --line: #e2ebf0;
+    --line-2: #cfdde5;
+    --accent: #0e7c86;
+    --accent-ink: #0b5f68;
+    --accent-soft: #e8f5f6;
+    --shadow: 0 1px 2px rgba(11,34,57,.05), 0 12px 32px -18px rgba(11,34,57,.35);
+    --radius: 16px;
+    --maxw: 1080px;
+    --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  [data-theme="dark"] {
+    --bg: #081520;
+    --bg-soft: #0c1e2b;
+    --surface: #0c1e2b;
+    --ink: #e9f3f7;
+    --ink-2: #c2d4dd;
+    --ink-3: #90a8b6;
+    --line: #1b3242;
+    --line-2: #264355;
+    --accent: #46c8d2;
+    --accent-ink: #8ee6ed;
+    --accent-soft: #0f2f3a;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 18px 40px -24px rgba(0,0,0,.9);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink-2);
+    font-family: var(--font); font-size: 16.5px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  h1, h2, h3, h4 { color: var(--ink); line-height: 1.15; margin: 0; letter-spacing: -.02em; }
+  a { color: var(--accent-ink); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  img, svg { display: block; max-width: 100%; }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; z-index: 99; background: var(--surface); padding: 10px 16px;
+                border-radius: 10px; box-shadow: var(--shadow); }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid transparent; transition: border-color .2s, background-color .3s;
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav-in { display: flex; align-items: center; gap: 20px; height: 66px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--ink);
+           letter-spacing: -.02em; text-decoration: none; }
+  .brand:hover { text-decoration: none; }
+  .brand-mark {
+    width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center;
+    background: linear-gradient(140deg, var(--accent), #0b4f6c); color: #fff;
+    font-size: 13px; font-weight: 800; letter-spacing: .02em;
+  }
+  .brand small { display: block; font-size: 11px; font-weight: 600; color: var(--ink-3);
+                 letter-spacing: .04em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 4px; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    padding: 8px 12px; border-radius: 9px; font-size: 14px; font-weight: 600;
+    color: var(--ink-2); white-space: nowrap; text-decoration: none;
+  }
+  .nav-links a:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
+  .icon-btn {
+    flex: none; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink-2); cursor: pointer;
+    display: grid; place-items: center; transition: border-color .2s, color .2s, transform .2s;
+  }
+  .icon-btn:hover { color: var(--accent); border-color: var(--line-2); transform: translateY(-1px); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  [data-theme="light"] .i-moon, [data-theme="dark"] .i-sun { display: none; }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; overflow: hidden; padding: 76px 0 64px; }
+  .hero::before, .hero::after {
+    content: ""; position: absolute; border-radius: 50%; filter: blur(70px); opacity: .5;
+    pointer-events: none; z-index: 0;
+  }
+  .hero::before { width: 520px; height: 520px; right: -140px; top: -220px;
+                  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 42%, transparent), transparent 68%); }
+  .hero::after { width: 420px; height: 420px; left: -180px; bottom: -260px;
+                 background: radial-gradient(circle, color-mix(in srgb, #2b6cb0 34%, transparent), transparent 70%); }
+  .hero-in { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr;
+             gap: 56px; align-items: center; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px 6px 11px;
+    border: 1px solid var(--line-2); border-radius: 999px; background: var(--surface);
+    font-size: 12.5px; font-weight: 600; color: var(--ink-2); letter-spacing: .01em;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; flex: none;
+         box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 22%, transparent); }
+  h1.name { font-size: clamp(2.6rem, 6.4vw, 4.1rem); font-weight: 800; margin: 18px 0 10px; letter-spacing: -.035em; }
+  .role { font-size: clamp(.82rem, 1.6vw, .95rem); font-weight: 700; letter-spacing: .17em;
+          text-transform: uppercase; color: var(--accent-ink); }
+  .lede { font-size: 1.06rem; margin: 18px 0 0; max-width: 46ch; color: var(--ink-2); }
+  .lede b { color: var(--ink); font-weight: 650; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 11px;
+    font-size: 14.5px; font-weight: 650; border: 1px solid transparent; cursor: pointer;
+    text-decoration: none; transition: transform .18s ease, box-shadow .18s ease, background-color .18s, color .18s;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-2px); }
+  .btn svg { width: 17px; height: 17px; }
+  .btn-primary { background: linear-gradient(140deg, var(--accent), #0b5f7d); color: #fff;
+                 box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--accent) 80%, transparent); }
+  .btn-ghost { background: var(--surface); border-color: var(--line-2); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+  .stats { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 34px; padding-top: 24px;
+           border-top: 1px solid var(--line); }
+  .stat b { display: block; font-size: 1.5rem; font-weight: 800; color: var(--ink); letter-spacing: -.03em; }
+  .stat span { font-size: 12.5px; color: var(--ink-3); font-weight: 600; }
+
+  /* hero card */
+  .card-now {
+    position: relative; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; overflow: hidden;
+  }
+  .card-now::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), #2b6cb0 60%, transparent);
+  }
+  .card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+               font-size: 11.5px; font-weight: 700; letter-spacing: .12em;
+               text-transform: uppercase; color: var(--ink-3); }
+  .card-head code { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0; text-transform: none;
+                    color: var(--accent-ink); background: var(--accent-soft);
+                    padding: 3px 8px; border-radius: 6px; }
+  .card-now h3 { font-size: 1.12rem; margin: 14px 0 4px; }
+  .card-now p { margin: 0; font-size: 14px; color: var(--ink-3); }
+  .card-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 9px; }
+  .card-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-2); }
+  .card-list svg { flex: none; width: 15px; height: 15px; margin-top: 4px; color: var(--accent); }
+
+  /* ---------- sections ---------- */
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .sec-head { max-width: 62ch; margin-bottom: 34px; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+             color: var(--accent-ink); }
+  .sec-head h2 { font-size: clamp(1.55rem, 3.4vw, 2.05rem); margin: 10px 0 0; font-weight: 750; }
+  .sec-head p { margin: 12px 0 0; color: var(--ink-2); }
+
+  .about { display: grid; grid-template-columns: 1.35fr .65fr; gap: 48px; align-items: start; }
+  .about p { margin: 0 0 14px; }
+  .about p:last-child { margin-bottom: 0; }
+  .about b { color: var(--ink); font-weight: 650; }
+  .facts { display: grid; gap: 10px; }
+  .fact { display: flex; gap: 12px; align-items: flex-start; background: var(--bg-soft);
+          border: 1px solid var(--line); border-radius: 12px; padding: 13px 15px; }
+  .fact svg { flex: none; width: 17px; height: 17px; margin-top: 3px; color: var(--accent); }
+  .fact div { font-size: 13.5px; line-height: 1.45; }
+  .fact b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 650; }
+
+  /* timeline */
+  .jobs { display: grid; gap: 16px; }
+  .job {
+    position: relative; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 24px 20px 26px; box-shadow: var(--shadow);
+    overflow: hidden; transition: transform .25s ease, border-color .25s ease;
+  }
+  .job::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 15%, transparent));
+    opacity: .55;
+  }
+  .job:hover { transform: translateY(-3px); border-color: var(--line-2); }
+  .job:hover::before { opacity: 1; }
+  .job-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+  .job h3 { font-size: 1.16rem; font-weight: 700; }
+  .job h3 span { color: var(--accent-ink); font-weight: 650; }
+  .dates { margin-left: auto; font-size: 12.5px; font-weight: 700; color: var(--ink-3);
+           background: var(--bg-soft); border: 1px solid var(--line);
+           padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+  .job-meta { font-size: 13px; color: var(--ink-3); margin-top: 5px; font-weight: 500; }
+  .job ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .job li { position: relative; padding-left: 20px; font-size: 14.8px; line-height: 1.55; }
+  .job li::before { content: ""; position: absolute; left: 3px; top: .62em; width: 6px; height: 6px;
+                    border-radius: 50%; background: color-mix(in srgb, var(--accent) 65%, transparent); }
+  .job li b { color: var(--ink); font-weight: 650; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding-top: 14px;
+          border-top: 1px dashed var(--line); }
+  .tag { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3);
+         background: var(--bg-soft); border: 1px solid var(--line);
+         padding: 3px 9px; border-radius: 6px; }
+
+  /* stack */
+  .stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .stack-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+                padding: 20px 22px; box-shadow: var(--shadow); }
+  .stack-card h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+                   font-weight: 700; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip { font-size: 13px; font-weight: 550; color: var(--ink-2); background: var(--accent-soft);
+          border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+          padding: 5px 11px; border-radius: 8px; }
+  .chip.hi { background: var(--ink); color: var(--bg); border-color: var(--ink); font-weight: 600; }
+
+  /* education + extras */
+  .grid-3 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+  .edu { display: grid; gap: 14px; }
+  .edu-item { border-left: 2px solid var(--line-2); padding-left: 16px; }
+  .edu-item b { display: block; color: var(--ink); font-size: 15px; font-weight: 650; }
+  .edu-item span { font-size: 13.5px; color: var(--ink-3); }
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+  .list li { display: flex; gap: 10px; font-size: 14.5px; }
+  .list svg { flex: none; width: 16px; height: 16px; margin-top: 4px; color: var(--accent); }
+  .sub-h { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+           font-weight: 700; margin: 26px 0 12px; }
+  .langs { display: flex; gap: 10px; flex-wrap: wrap; }
+  .lang { border: 1px solid var(--line); background: var(--bg-soft); border-radius: 10px;
+          padding: 9px 14px; font-size: 13.5px; }
+  .lang b { color: var(--ink); }
+
+  /* contact */
+  .contact { padding: 0 0 64px; border-top: none; }
+  .contact-card {
+    position: relative; overflow: hidden; border-radius: 22px; padding: 46px 40px;
+    background: linear-gradient(135deg, #0b2239, #0d3a4a 55%, #0e7c86);
+    color: #d9e8ee; box-shadow: 0 30px 60px -30px rgba(11,34,57,.6);
+  }
+  .contact-card::after {
+    content: ""; position: absolute; width: 420px; height: 420px; right: -120px; top: -180px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(70,200,210,.35), transparent 65%);
+  }
+  .contact-card h2 { color: #fff; font-size: clamp(1.6rem, 3.4vw, 2.1rem); }
+  .contact-card p { position: relative; max-width: 52ch; margin: 12px 0 26px; color: #c5dbe3; }
+  .contact-card .cta-row { position: relative; margin-top: 0; }
+  .contact-card .btn-primary { background: #fff; color: #0b2239;
+    box-shadow: 0 12px 28px -14px rgba(0,0,0,.7); }
+  .contact-card .btn-ghost { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.28);
+    color: #fff; }
+  .contact-card .btn-ghost:hover { background: rgba(255,255,255,.16); color: #fff; border-color: #fff; }
+  .contact-links { position: relative; display: flex; flex-wrap: wrap; gap: 22px; margin-top: 30px;
+                   padding-top: 22px; border-top: 1px solid rgba(255,255,255,.16); font-size: 14px; }
+  .contact-links a { color: #eaf6f8; display: inline-flex; align-items: center; gap: 8px; font-weight: 550; }
+  .contact-links svg { width: 16px; height: 16px; opacity: .8; }
+  .contact-links a:hover { text-decoration: underline; }
+
+  footer { padding: 26px 0 40px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-3); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+
+  /* reveal on scroll */
+  .js .reveal { opacity: 0; transform: translateY(16px); }
+  .js .reveal.in { opacity: 1; transform: none;
+    transition: opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal { opacity: 1; transform: none; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px) {
+    .hero-in, .about, .grid-3 { grid-template-columns: 1fr; gap: 34px; }
+    .hero { padding: 48px 0 44px; }
+    .card-now { order: 2; }
+    .stack { grid-template-columns: 1fr; }
+    section { padding: 48px 0; }
+    .contact-card { padding: 34px 26px; border-radius: 18px; }
+  }
+  @media (max-width: 720px) {
+    .nav-links { order: 3; margin-left: -5px; width: 100%; padding-bottom: 6px; gap: 2px; flex-wrap: wrap; }
+    .nav-links a { padding: 7px 5px; font-size: 12.5px; letter-spacing: -.01em; }
+    .nav-in { height: auto; flex-wrap: wrap; padding-top: 10px; gap: 10px 12px; }
+    .icon-btn { margin-left: auto; }
+    .brand small { display: none; }
+    html { scroll-padding-top: 108px; }
+    .job { padding: 20px 18px 18px 20px; }
+    .dates { margin-left: 0; }
+    .stats { gap: 14px 22px; }
+    .stat b { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#perfil">Saltar al contenido</a>
+
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">OC</span>
+      <span>Oscar Cid<small>Senior Mobile Engineer</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#perfil">Perfil</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#stack">Stack</a>
+      <a href="#formacion">Formación</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <button class="icon-btn" id="theme" type="button" aria-label="Cambiar entre tema claro y oscuro">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- ---------- HERO ---------- -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-in">
+      <div>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Disponible para nuevos retos</span>
+        <h1 class="name" id="hero-title">Oscar Cid</h1>
+        <p class="role">Senior Mobile Engineer · Android &amp; Flutter</p>
+        <p class="lede">
+          Llevo <b>+14 años</b> convirtiendo ideas en producto móvil que la gente usa a diario:
+          punto de venta, VoIP y apps con hardware real. <b>Kotlin, Jetpack Compose y Flutter</b>,
+          arquitecturas limpias y una obsesión sana por el rendimiento y la calidad.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="CV_Oscar_Cid.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
+            Descargar CV
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/cidoscar" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.8 8.65 22 10.6 22 14v7h-4v-6.2c0-1.5-.53-2.5-1.85-2.5-1.01 0-1.6.68-1.87 1.34-.1.24-.13.57-.13.9V21h-4V9Z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>14+</b><span>años en software</span></div>
+          <div class="stat"><b>10</b><span>años en Android</span></div>
+          <div class="stat"><b>7</b><span>apps publicadas</span></div>
+          <div class="stat"><b>MBA</b><span>visión de negocio</span></div>
+        </div>
+      </div>
+
+      <aside class="card-now" aria-label="Resumen de rol actual">
+        <div class="card-head"><span>Ahora</span><code>flutter run --release</code></div>
+        <h3>Mobile Senior Developer · Disashop</h3>
+        <p>App de punto de venta Top-Up — retail &amp; pagos</p>
+        <ul class="card-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Flutter + BLoC sobre arquitectura hexagonal</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>NFC, impresora térmica y terminales Sunmi</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Entrega continua con Git, Jira y Fastlane</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>AI-assisted development y agentes en el SDLC</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ---------- PERFIL ---------- -->
+  <section id="perfil" aria-labelledby="perfil-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Perfil</p>
+        <h2 id="perfil-h">Ingeniero de producto, no solo de pantallas</h2>
+      </div>
+      <div class="about">
+        <div class="reveal">
+          <p>
+            Empecé en <b>BI y ERP</b> (Java, SQL Server, cubos OLAP) y desde 2014 mi carrera vive en
+            móvil. Esa mezcla me dejó una ventaja: entiendo el dato y el negocio detrás de cada
+            pantalla, y sé cuándo una decisión técnica ahorra dinero o la cuesta.
+          </p>
+          <p>
+            Los últimos años los he pasado donde el móvil toca el mundo físico:
+            <b>terminales de punto de venta con NFC e impresora térmica</b>,
+            <b>SDKs de VoIP con WebRTC</b>, beacons, BLE y trackers GPS. Perfil de
+            <b>R&amp;D</b>: valido hipótesis, prototipo rápido y aterrizo la solución en producción
+            con tests, CI/CD y estándares compartidos con el equipo.
+          </p>
+          <p>
+            Me gusta el código que se puede leer dentro de un año: <b>MVVM, MVI, Clean y Hexagonal</b>
+            no son moda, son la forma de que un equipo de cinco no se pise. Y ahora incorporo
+            <b>AI-assisted development</b> y orquestación de agentes al ciclo de vida del software,
+            con criterio y revisión.
+          </p>
+        </div>
+        <div class="facts reveal">
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
+            <div><b>Galicia, España</b>Ourense / A Coruña · remoto y presencial</div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.4A2.4 2.4 0 0 1 10.9 3h2.2a2.4 2.4 0 0 1 2.4 2.4V7"/></svg>
+            <div><b>Retail · VoIP · movilidad</b>productos con hardware y terceros</div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4.4"/></svg>
+            <div><b>Referente técnico Android</b>arquitectura, code review y mentoría</div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v13H6.5A2.5 2.5 0 0 0 4 19.5V6.5Z"/><path d="M8 8.5h8"/></svg>
+            <div><b>MBA · EUDE Business School</b>tecnología alineada con objetivos de negocio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- EXPERIENCIA ---------- -->
+  <section id="experiencia" aria-labelledby="exp-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Experiencia</p>
+        <h2 id="exp-h">Dónde he construido producto</h2>
+        <p>De liderar el equipo de una app de retail en Caracas a ser la referencia Android en productos de comunicaciones en Galicia.</p>
+      </div>
+
+      <div class="jobs">
+        <article class="job reveal">
+          <div class="job-top">
+            <h3>Mobile Senior Developer <span>· Disashop</span></h3>
+            <span class="dates">feb. 2025 — actualidad</span>
+          </div>
+          <p class="job-meta">A Coruña, Galicia · Producto: Top-Up (punto de venta)</p>
+          <ul>
+            <li>Desarrollo y mantenimiento de la app de <b>punto de venta Top-Up en Flutter</b>, referente del canal retail de la compañía.</li>
+            <li>Diseño bajo <b>arquitectura hexagonal con BLoC</b>, aislando dominio y facilitando test y evolución de features.</li>
+            <li>Integración del <b>hardware del terminal Sunmi</b>: NFC, impresora térmica Bluetooth y periféricos, sobre Android e iOS.</li>
+            <li>Análisis de mejoras y nuevas funcionalidades junto a negocio, con <b>desarrollo asistido por IA</b>.</li>
+          </ul>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">BLoC</span><span class="tag">Hexagonal</span><span class="tag">Android</span><span class="tag">iOS</span><span class="tag">Sunmi</span><span class="tag">NFC</span><span class="tag">Git · Jira</span></div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-top">
+            <h3>R&amp;D Android Senior Developer <span>· Quobis</span></h3>
+            <span class="dates">oct. 2022 — feb. 2025</span>
+          </div>
+          <p class="job-meta">Vigo, Galicia · Producto: comunicaciones VoIP (Collaborator)</p>
+          <ul>
+            <li>Desarrollo y mantenimiento del producto de <b>comunicaciones VoIP sobre Android</b>, con foco en estabilidad de llamadas y consumo de recursos.</li>
+            <li>Evolución del <b>SDK</b>: nuevas capacidades, compatibilidad y API pública para integradores.</li>
+            <li>Implementación de <b>WebRTC</b>, sockets y componentes de arquitectura con tests unitarios.</li>
+            <li>Integración continua con <b>Jenkins</b> dentro de un equipo de I+D.</li>
+          </ul>
+          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack</span><span class="tag">MVVM</span><span class="tag">WebRTC</span><span class="tag">RxKotlin</span><span class="tag">Sockets</span><span class="tag">UnitTest</span><span class="tag">Jenkins</span></div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-top">
+            <h3>Android Senior Developer <span>· Ipglobal S.L.</span></h3>
+            <span class="dates">feb. 2017 — oct. 2022</span>
+          </div>
+          <p class="job-meta">A Coruña, Galicia · 7 apps publicadas</p>
+          <ul>
+            <li>Diseño y desarrollo <b>desde cero</b> de las aplicaciones Android de la compañía, siguiendo guías de plataforma.</li>
+            <li>Apps en <b>turismo, retail y salud</b>: Pilgrim, Alkira, GetBeacon, Pedasi Paradise, SuiteApp, FittingRooms y AirCovid.</li>
+            <li>Retos nativos: <b>Android Launcher</b> propio, <b>servidor embebido</b>, tracking GPS, beacons y BLE con SmartBand.</li>
+            <li>Proyectos <b>Kotlin y Java</b> con MVVM y Material Design en equipos SCRUM; introducción de <b>Flutter</b> en el stack.</li>
+          </ul>
+          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">Flutter</span><span class="tag">MVVM</span><span class="tag">BLE</span><span class="tag">Beacons</span><span class="tag">GPS</span><span class="tag">SCRUM</span></div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-top">
+            <h3>Project Leader <span>· XSales Mobility</span></h3>
+            <span class="dates">abr. 2016 — ene. 2017</span>
+          </div>
+          <p class="job-meta">Caracas, Venezuela · Antes: R&amp;D Senior Engineer (sep. 2014 — abr. 2016)</p>
+          <ul>
+            <li>Dirección del equipo de desarrollo de la app móvil <b>XSales</b> bajo <b>SCRUM</b>: planificación, requisitos y entrega.</li>
+            <li>Optimización de procesos y generación de <b>informes BI</b> para empresas de retail y gran consumo.</li>
+            <li>Como R&amp;D Senior Engineer: desarrollo en <b>Java</b> con Design Patterns, SQLite, Volley y GPS tracking.</li>
+          </ul>
+          <div class="tags"><span class="tag">Java</span><span class="tag">SQLite</span><span class="tag">Volley</span><span class="tag">BI</span><span class="tag">Scrum</span></div>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-top">
+            <h3>Analyst Developer <span>· Beconsult &amp; Cosméticos Rolda</span></h3>
+            <span class="dates">jun. 2011 — sep. 2014</span>
+          </div>
+          <p class="job-meta">Venezuela · Etapa de software de gestión, BI y ERP</p>
+          <ul>
+            <li>Responsable técnico de herramientas de <b>gestión de software y helpdesk</b>; desarrollo sobre <b>COMPIERE ERP&amp;CRM</b> en Java.</li>
+            <li>Aplicaciones web de TI y BI en <b>ASP.NET</b> con <b>cubos OLAP</b> (SSAS), BIRT y stored procedures en SQL Server.</li>
+          </ul>
+          <div class="tags"><span class="tag">Java</span><span class="tag">ASP.NET</span><span class="tag">SQL Server</span><span class="tag">DB2</span><span class="tag">BIRT</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- STACK ---------- -->
+  <section id="stack" aria-labelledby="stack-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Stack</p>
+        <h2 id="stack-h">Con qué trabajo cada día</h2>
+      </div>
+      <div class="stack">
+        <div class="stack-card reveal">
+          <h3>Móvil</h3>
+          <div class="chips">
+            <span class="chip hi">Kotlin</span><span class="chip hi">Jetpack Compose</span><span class="chip hi">Flutter</span>
+            <span class="chip">Java</span><span class="chip">Android Jetpack</span><span class="chip">Dart</span>
+            <span class="chip">iOS</span><span class="chip">Material Design</span>
+          </div>
+        </div>
+        <div class="stack-card reveal">
+          <h3>Arquitectura</h3>
+          <div class="chips">
+            <span class="chip hi">MVVM</span><span class="chip hi">Hexagonal</span><span class="chip hi">Clean Architecture</span>
+            <span class="chip">MVI</span><span class="chip">BLoC</span><span class="chip">Architecture Components</span><span class="chip">Design Patterns</span>
+          </div>
+        </div>
+        <div class="stack-card reveal">
+          <h3>Integraciones</h3>
+          <div class="chips">
+            <span class="chip hi">WebRTC</span><span class="chip hi">NFC</span>
+            <span class="chip">SDKs</span><span class="chip">Bluetooth / BLE</span><span class="chip">Sunmi</span>
+            <span class="chip">Impresora térmica</span><span class="chip">Sockets</span><span class="chip">GPS</span><span class="chip">REST / Volley</span><span class="chip">RxKotlin</span>
+          </div>
+        </div>
+        <div class="stack-card reveal">
+          <h3>Calidad y entrega</h3>
+          <div class="chips">
+            <span class="chip hi">UnitTest</span>
+            <span class="chip">Espresso</span><span class="chip">Gradle</span><span class="chip">Git</span>
+            <span class="chip">Jenkins</span><span class="chip">Fastlane</span><span class="chip">SCRUM · Jira</span>
+          </div>
+        </div>
+        <div class="stack-card reveal">
+          <h3>Datos</h3>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">SQLite</span><span class="chip">SQL Server</span>
+            <span class="chip">DB2</span><span class="chip">BIRT</span><span class="chip">BI / SSAS</span>
+          </div>
+        </div>
+        <div class="stack-card reveal">
+          <h3>IA aplicada</h3>
+          <div class="chips">
+            <span class="chip hi">AI-assisted development</span>
+            <span class="chip">Agentes sobre el SDLC</span><span class="chip">Orquestación de workflows</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- FORMACIÓN ---------- -->
+  <section id="formacion" aria-labelledby="form-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Formación</p>
+        <h2 id="form-h">Base técnica y de negocio</h2>
+      </div>
+      <div class="grid-3">
+        <div class="reveal">
+          <div class="edu">
+            <div class="edu-item">
+              <b>MBA — Máster en Dirección y Administración de Empresas</b>
+              <span>EUDE Business School · 2013 — 2014</span>
+            </div>
+            <div class="edu-item">
+              <b>Ingeniero en Informática</b>
+              <span>Universidad Católica Andrés Bello · 2006 — 2012</span>
+            </div>
+            <div class="edu-item">
+              <b>Full Stack Web Development Certification</b>
+              <span>freeCodeCamp · 2016 — 2017</span>
+            </div>
+          </div>
+          <p class="sub-h">Idiomas</p>
+          <div class="langs">
+            <span class="lang"><b>Español</b> · nativo</span>
+            <span class="lang"><b>Inglés</b> · profesional</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="sub-h" style="margin-top:0">Reconocimientos</p>
+          <ul class="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="m8.6 13.6-1.4 7 4.8-2.6 4.8 2.6-1.4-7"/></svg><span><b>Competencia MSDE</b> — Microsoft</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="m8.6 13.6-1.4 7 4.8-2.6 4.8 2.6-1.4-7"/></svg><span><b>The AppTourism Award</b></span></li>
+          </ul>
+          <p class="sub-h">Certificaciones</p>
+          <ul class="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Planificación y Administración del Tiempo</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Compiere ERP &amp; CRM</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Curso MySQL</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>JavaScript Road Trip Part 1 &amp; 2</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACTO ---------- -->
+  <section id="contacto" class="contact" aria-labelledby="contacto-h">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2 id="contacto-h">¿Hablamos de tu próximo producto móvil?</h2>
+        <p>Abierto a roles senior de Android/Flutter y a colaboraciones técnicas. Respondo siempre, aunque sea para decir que no.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:oscid88@gmail.com?subject=Contacto%20desde%20tu%20web">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+            oscid88@gmail.com
+          </a>
+          <a class="btn btn-ghost" href="CV_Oscar_Cid.pdf" download>Descargar CV (PDF)</a>
+        </div>
+        <div class="contact-links">
+          <a href="tel:+34689802332">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h2.3l1.6 4-2 1.3a11 11 0 0 0 5.6 5.6l1.3-2 4 1.6v2.3a2.5 2.5 0 0 1-2.7 2.5C10.3 18.3 5.7 13.7 4.7 6.2A2.5 2.5 0 0 1 6.2 3.5Z"/></svg>
+            +34 689 802 332
+          </a>
+          <a href="https://www.linkedin.com/in/cidoscar" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.8 8.65 22 10.6 22 14v7h-4v-6.2c0-1.5-.53-2.5-1.85-2.5-1.01 0-1.6.68-1.87 1.34-.1.24-.13.57-.13.9V21h-4V9Z"/></svg>
+            linkedin.com/in/cidoscar
+          </a>
+          <a href="https://github.com/oscarcidcoder" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            github.com/oscarcidcoder
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Oscar Cid · Senior Mobile Engineer</span>
+    <span>Hecho a mano con HTML, CSS y cero frameworks.</span>
+  </div>
+</footer>
+
+<script>
+  // theme toggle
+  (function () {
+    var btn = document.getElementById('theme');
+    var root = document.documentElement;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    function sync() {
+      var dark = root.dataset.theme === 'dark';
+      btn.setAttribute('aria-pressed', dark);
+      btn.setAttribute('aria-label', dark ? 'Activar tema claro' : 'Activar tema oscuro');
+      if (meta) meta.setAttribute('content', dark ? '#081520' : '#0b2239');
+    }
+    btn.addEventListener('click', function () {
+      var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+
+  // sticky nav border
+  (function () {
+    var nav = document.getElementById('nav');
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 8); };
+    onScroll();
+    addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  // reveal on scroll
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) ||
+        matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
