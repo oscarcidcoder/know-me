@@ -366,7 +366,7 @@
           arquitecturas limpias y una obsesión sana por el rendimiento y la calidad.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="CV_Oscar_Cid.pdf" download>
+          <a class="btn btn-primary" href="CV_Oscar_Cid.pdf" download data-cv-download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
             <span data-i18n-hero-cv>Descargar CV</span>
           </a>
@@ -648,7 +648,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
             oscid88@gmail.com
           </a>
-          <a class="btn btn-ghost" href="CV_Oscar_Cid.pdf" download><span data-i18n-contact-cv>Descargar CV (PDF)</span></a>
+          <a class="btn btn-ghost" href="CV_Oscar_Cid.pdf" download data-cv-download><span data-i18n-contact-cv>Descargar CV (PDF)</span></a>
         </div>
         <div class="contact-links">
           <a href="tel:+34689802332">
@@ -967,6 +967,10 @@
       document.querySelectorAll('[data-i18n-contact-subtitle]').forEach(function(el) { el.textContent = dict['contact-subtitle']; });
       document.querySelectorAll('[data-i18n-contact-cv]').forEach(function(el) { el.textContent = dict['contact-cv']; });
       document.querySelectorAll('[data-i18n-footer]').forEach(function(el) { el.textContent = dict['footer']; });
+
+      // CV download follows the active language
+      var cvFile = lang === 'es' ? 'CV_Oscar_Cid_es.pdf' : 'CV_Oscar_Cid.pdf';
+      document.querySelectorAll('[data-cv-download]').forEach(function(a) { a.setAttribute('href', cvFile); });
 
       // update html lang
       root.lang = lang;
