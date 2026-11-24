@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oscar Cid — Senior Mobile Engineer</title>
-<meta name="description" content="Oscar Cid, Senior Mobile Engineer. +14 años construyendo producto móvil en Android, Kotlin y Flutter. Arquitecturas limpias, R&D y AI-assisted development.">
+<meta name="description" content="Oscar Cid, Senior Mobile Engineer. +14 years building mobile product in Android, Kotlin and Flutter. Clean architectures, R&D and AI-assisted development.">
 <meta name="author" content="Oscar Cid">
 <meta name="theme-color" content="#0b2239">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Oscar Cid — Senior Mobile Engineer">
-<meta property="og:description" content="+14 años construyendo producto móvil en Android, Kotlin y Flutter.">
+<meta property="og:description" content="+14 years building mobile product in Android, Kotlin and Flutter.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e7c86'/%3E%3Ctext x='32' y='43' font-family='Segoe UI,Arial' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3EOC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,6 +110,15 @@
   .icon-btn:hover { color: var(--accent); border-color: var(--line-2); transform: translateY(-1px); }
   .icon-btn svg { width: 18px; height: 18px; }
   [data-theme="light"] .i-moon, [data-theme="dark"] .i-sun { display: none; }
+
+  /* lang switch */
+  .lang-switch { display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+                 background: var(--bg-soft); border: 1px solid var(--line); font-size: 12.5px;
+                 font-weight: 600; color: var(--ink-2); cursor: pointer; white-space: nowrap;
+                 transition: background-color .2s, border-color .2s, color .2s; }
+  .lang-switch:hover { background: var(--surface); border-color: var(--line-2); color: var(--ink); }
+  .lang-switch:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 3px; }
+  .lang-switch svg { width: 16px; height: 16px; flex: none; }
 
   /* ---------- hero ---------- */
   .hero { position: relative; overflow: hidden; padding: 76px 0 64px; }
@@ -308,6 +317,7 @@
     .nav-in { height: auto; flex-wrap: wrap; padding-top: 10px; gap: 10px 12px; }
     .icon-btn { margin-left: auto; }
     .brand small { display: none; }
+    .lang-switch { margin-left: auto; }
     html { scroll-padding-top: 108px; }
     .job { padding: 20px 18px 18px 20px; }
     .dates { margin-left: 0; }
@@ -317,7 +327,7 @@
 </style>
 </head>
 <body>
-<a class="skip" href="#perfil">Saltar al contenido</a>
+<a class="skip" href="#perfil" data-i18n-skip>Saltar al contenido</a>
 
 <nav class="nav" id="nav" aria-label="Navegación principal">
   <div class="wrap nav-in">
@@ -326,12 +336,16 @@
       <span>Oscar Cid<small>Senior Mobile Engineer</small></span>
     </a>
     <div class="nav-links">
-      <a href="#perfil">Perfil</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#stack">Stack</a>
-      <a href="#formacion">Formación</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#perfil" data-i18n-nav-profile>Perfil</a>
+      <a href="#experiencia" data-i18n-nav-experience>Experiencia</a>
+      <a href="#stack" data-i18n-nav-stack>Stack</a>
+      <a href="#formacion" data-i18n-nav-education>Formación</a>
+      <a href="#contacto" data-i18n-nav-contact>Contacto</a>
     </div>
+    <button class="lang-switch" id="langSwitch" type="button" aria-label="Cambiar idioma" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span data-lang-en>EN</span><span data-lang-es style="display:none">ES</span>
+    </button>
     <button class="icon-btn" id="theme" type="button" aria-label="Cambiar entre tema claro y oscuro">
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.6 12h2.2M19.2 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
       <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"/></svg>
@@ -344,10 +358,10 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-in">
       <div>
-        <span class="pill"><span class="dot" aria-hidden="true"></span> Disponible para nuevos retos</span>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> <span data-i18n-hero-available>Disponible para nuevos retos</span></span>
         <h1 class="name" id="hero-title">Oscar Cid</h1>
-        <p class="role">Senior Mobile Engineer · Android &amp; Flutter</p>
-        <p class="lede">
+        <p class="role">Senior Mobile Engineer · Android & Flutter</p>
+        <p class="lede" data-i18n-hero-lede>
           Llevo <b>+14 años</b> convirtiendo ideas en producto móvil que la gente usa a diario:
           punto de venta, VoIP y apps con hardware real. <b>Kotlin, Jetpack Compose y Flutter</b>,
           arquitecturas limpias y una obsesión sana por el rendimiento y la calidad.
@@ -355,7 +369,7 @@
         <div class="cta-row">
           <a class="btn btn-primary" href="CV_Oscar_Cid.pdf" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>
-            Descargar CV
+            <span data-i18n-hero-cv>Descargar CV</span>
           </a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/cidoscar" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.8 8.65 22 10.6 22 14v7h-4v-6.2c0-1.5-.53-2.5-1.85-2.5-1.01 0-1.6.68-1.87 1.34-.1.24-.13.57-.13.9V21h-4V9Z"/></svg>
@@ -363,22 +377,22 @@
           </a>
         </div>
         <div class="stats">
-          <div class="stat"><b>14+</b><span>años en software</span></div>
-          <div class="stat"><b>10</b><span>años en Android</span></div>
-          <div class="stat"><b>7</b><span>apps publicadas</span></div>
-          <div class="stat"><b>MBA</b><span>visión de negocio</span></div>
+          <div class="stat"><b>14+</b><span data-i18n-stat-years>años en software</span></div>
+          <div class="stat"><b>10</b><span data-i18n-stat-android>años en Android</span></div>
+          <div class="stat"><b>7</b><span data-i18n-stat-apps>apps publicadas</span></div>
+          <div class="stat"><b>MBA</b><span data-i18n-stat-mba>visión de negocio</span></div>
         </div>
       </div>
 
       <aside class="card-now" aria-label="Resumen de rol actual">
-        <div class="card-head"><span>Ahora</span><code>flutter run --release</code></div>
+        <div class="card-head"><span data-i18n-card-now>Ahora</span><code>flutter run --release</code></div>
         <h3>Mobile Senior Developer · Disashop</h3>
-        <p>App de punto de venta Top-Up — retail &amp; pagos</p>
+        <p data-i18n-card-role>App de punto de venta Top-Up — retail & pagos</p>
         <ul class="card-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Flutter + BLoC sobre arquitectura hexagonal</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>NFC, impresora térmica y terminales Sunmi</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Entrega continua con Git, Jira y Fastlane</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>AI-assisted development y agentes en el SDLC</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-card-1>Flutter + BLoC sobre arquitectura hexagonal</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-card-2>NFC, impresora térmica y terminales Sunmi</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-card-3>Entrega continua con Git, Jira y Fastlane</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-card-4>AI-assisted development y agentes en el SDLC</span></li>
         </ul>
       </aside>
     </div>
@@ -388,24 +402,24 @@
   <section id="perfil" aria-labelledby="perfil-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Perfil</p>
-        <h2 id="perfil-h">Ingeniero de producto, no solo de pantallas</h2>
+        <p class="eyebrow" data-i18n-sec-profile>Perfil</p>
+        <h2 id="perfil-h" data-i18n-profile-title>Ingeniero de producto, no solo de pantallas</h2>
       </div>
       <div class="about">
         <div class="reveal">
-          <p>
+          <p data-i18n-profile-p1>
             Empecé en <b>BI y ERP</b> (Java, SQL Server, cubos OLAP) y desde 2014 mi carrera vive en
             móvil. Esa mezcla me dejó una ventaja: entiendo el dato y el negocio detrás de cada
             pantalla, y sé cuándo una decisión técnica ahorra dinero o la cuesta.
           </p>
-          <p>
+          <p data-i18n-profile-p2>
             Los últimos años los he pasado donde el móvil toca el mundo físico:
             <b>terminales de punto de venta con NFC e impresora térmica</b>,
             <b>SDKs de VoIP con WebRTC</b>, beacons, BLE y trackers GPS. Perfil de
-            <b>R&amp;D</b>: valido hipótesis, prototipo rápido y aterrizo la solución en producción
+            <b>R&D</b>: valido hipótesis, prototipo rápido y aterrizo la solución en producción
             con tests, CI/CD y estándares compartidos con el equipo.
           </p>
-          <p>
+          <p data-i18n-profile-p3>
             Me gusta el código que se puede leer dentro de un año: <b>MVVM, MVI, Clean y DDD</b>
             no son moda, son la forma de que un equipo de cinco no se pise. Y ahora incorporo
             <b>AI-assisted development</b> y orquestación de agentes al ciclo de vida del software,
@@ -415,19 +429,19 @@
         <div class="facts reveal">
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg>
-            <div><b>Galicia, España</b>Ourense / A Coruña · remoto y presencial</div>
+            <div><b data-i18n-fact-location-title>Galicia, España</b><span data-i18n-fact-location>Ourense / A Coruña · remoto y presencial</span></div>
           </div>
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.4A2.4 2.4 0 0 1 10.9 3h2.2a2.4 2.4 0 0 1 2.4 2.4V7"/></svg>
-            <div><b>Retail · VoIP · movilidad</b>productos con hardware y terceros</div>
+            <div><b data-i18n-fact-domains-title>Retail · VoIP · movilidad</b><span data-i18n-fact-domains>productos con hardware y terceros</span></div>
           </div>
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4.4"/></svg>
-            <div><b>Referente técnico Android</b>arquitectura, code review y mentoría</div>
+            <div><b data-i18n-fact-ref-title>Referente técnico Android</b><span data-i18n-fact-ref>arquitectura, code review y mentoría</span></div>
           </div>
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v13H6.5A2.5 2.5 0 0 0 4 19.5V6.5Z"/><path d="M8 8.5h8"/></svg>
-            <div><b>MBA · EUDE Business School</b>tecnología alineada con objetivos de negocio</div>
+            <div><b data-i18n-fact-mba-title>MBA · EUDE Business School</b><span data-i18n-fact-mba>tecnología alineada con objetivos de negocio</span></div>
           </div>
         </div>
       </div>
@@ -438,9 +452,9 @@
   <section id="experiencia" aria-labelledby="exp-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Experiencia</p>
-        <h2 id="exp-h">Dónde he construido producto</h2>
-        <p>De liderar el equipo de una app de retail en Caracas a ser la referencia Android en productos de comunicaciones en Galicia.</p>
+        <p class="eyebrow" data-i18n-sec-experience>Experiencia</p>
+        <h2 id="exp-h" data-i18n-exp-title>Dónde he construido producto</h2>
+        <p data-i18n-exp-subtitle>De liderar el equipo de una app de retail en Caracas a ser la referencia Android en productos de comunicaciones en Galicia.</p>
       </div>
 
       <div class="jobs">
@@ -449,28 +463,28 @@
             <h3>Mobile Senior Developer <span>· Disashop</span></h3>
             <span class="dates">feb. 2025 — actualidad</span>
           </div>
-          <p class="job-meta">A Coruña, Galicia · Producto: Top-Up (punto de venta)</p>
+          <p class="job-meta" data-i18n-job1-meta>A Coruña, Galicia · Producto: Top-Up (punto de venta)</p>
           <ul>
-            <li>Desarrollo y mantenimiento de la app de <b>punto de venta Top-Up en Flutter</b>, referente del canal retail de la compañía.</li>
-            <li>Diseño bajo <b>arquitectura hexagonal con BLoC</b>, aislando dominio y facilitando test y evolución de features.</li>
-            <li>Integración del <b>hardware del terminal Sunmi</b>: NFC, impresora térmica Bluetooth y periféricos, sobre Android e iOS.</li>
-            <li>Desarrollo de <b>librería para integración de módulo NFC</b> en Sunmi P3H</li>
-            <li>Análisis de mejoras y nuevas funcionalidades junto a negocio, con <b>desarrollo asistido por IA</b>.</li>
+            <li data-i18n-job1-1>Desarrollo y mantenimiento de la app de <b>punto de venta Top-Up en Flutter</b>, referente del canal retail de la compañía.</li>
+            <li data-i18n-job1-2>Diseño bajo <b>arquitectura hexagonal con BLoC</b>, aislando dominio y facilitando test y evolución de features.</li>
+            <li data-i18n-job1-3>Integración del <b>hardware del terminal Sunmi</b>: NFC, impresora térmica Bluetooth y periféricos, sobre Android e iOS.</li>
+            <li data-i18n-job1-4>Desarrollo de <b>librería para integración de módulo NFC</b> en Sunmi P3H</li>
+            <li data-i18n-job1-5>Análisis de mejoras y nuevas funcionalidades junto a negocio, con <b>desarrollo asistido por IA</b>.</li>
           </ul>
           <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">BLoC</span><span class="tag">Hexagonal</span><span class="tag">Android</span><span class="tag">iOS</span><span class="tag">Sunmi</span><span class="tag">NFC</span><span class="tag">Git · Jira</span></div>
         </article>
 
         <article class="job reveal">
           <div class="job-top">
-            <h3>R&amp;D Android Senior Developer <span>· Quobis</span></h3>
+            <h3>R&D Android Senior Developer <span>· Quobis</span></h3>
             <span class="dates">oct. 2022 — feb. 2025</span>
           </div>
-          <p class="job-meta">Vigo, Galicia · Producto: comunicaciones VoIP (Collaborator)</p>
+          <p class="job-meta" data-i18n-job2-meta>Vigo, Galicia · Producto: comunicaciones VoIP (Collaborator)</p>
           <ul>
-            <li>Desarrollo y mantenimiento del producto de <b>comunicaciones VoIP sobre Android</b>, con foco en estabilidad de llamadas y consumo de recursos.</li>
-            <li>Evolución del <b>SDK</b>: nuevas capacidades, compatibilidad y API pública para integradores.</li>
-            <li>Implementación de <b>WebRTC</b>, sockets y componentes de arquitectura con tests unitarios.</li>
-            <li>Integración continua con <b>Jenkins</b> dentro de un equipo de I+D.</li>
+            <li data-i18n-job2-1>Desarrollo y mantenimiento del producto de <b>comunicaciones VoIP sobre Android</b>, con foco en estabilidad de llamadas y consumo de recursos.</li>
+            <li data-i18n-job2-2>Evolución del <b>SDK</b>: nuevas capacidades, compatibilidad y API pública para integradores.</li>
+            <li data-i18n-job2-3>Implementación de <b>WebRTC</b>, sockets y componentes de arquitectura con tests unitarios.</li>
+            <li data-i18n-job2-4>Integración continua con <b>Jenkins</b> dentro de un equipo de I+D.</li>
           </ul>
           <div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack</span><span class="tag">MVVM</span><span class="tag">WebRTC</span><span class="tag">RxKotlin</span><span class="tag">Sockets</span><span class="tag">UnitTest</span><span class="tag">Jenkins</span></div>
         </article>
@@ -480,12 +494,12 @@
             <h3>Android Senior Developer <span>· Ipglobal S.L.</span></h3>
             <span class="dates">feb. 2017 — oct. 2022</span>
           </div>
-          <p class="job-meta">A Coruña, Galicia · 7 apps publicadas</p>
+          <p class="job-meta" data-i18n-job3-meta>A Coruña, Galicia · 7 apps publicadas</p>
           <ul>
-            <li>Diseño y desarrollo <b>desde cero</b> de las aplicaciones Android de la compañía, siguiendo guías de Android.</li>
-            <li>Apps en <b>turismo, retail y salud</b>: Pilgrim, Alkira, GetBeacon, Pedasi Paradise, SuiteApp, FittingRooms y AirCovid.</li>
-            <li>Retos nativos: <b>Android TV Launcher</b> propio, <b>tracking GPS</b>, beacons y BLE con SmartBand.</li>
-            <li>Proyectos <b>Kotlin y Java</b> con MVVM y Material Design en equipos SCRUM; introducción de <b>Flutter</b> en el stack.</li>
+            <li data-i18n-job3-1>Diseño y desarrollo <b>desde cero</b> de las aplicaciones Android de la compañía, siguiendo guías de Android.</li>
+            <li data-i18n-job3-2>Apps en <b>turismo, retail y salud</b>: Pilgrim, Alkira, GetBeacon, Pedasi Paradise, SuiteApp, FittingRooms y AirCovid.</li>
+            <li data-i18n-job3-3>Retos nativos: <b>Android TV Launcher</b> propio, <b>tracking GPS</b>, beacons y BLE con SmartBand.</li>
+            <li data-i18n-job3-4>Proyectos <b>Kotlin y Java</b> con MVVM y Material Design en equipos SCRUM; introducción de <b>Flutter</b> en el stack.</li>
           </ul>
           <div class="tags"><span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">Flutter</span><span class="tag">MVVM</span><span class="tag">BLE</span><span class="tag">Beacons</span><span class="tag">GPS</span><span class="tag">SCRUM</span></div>
         </article>
@@ -495,24 +509,24 @@
             <h3>Project Leader <span>· XSales Mobility</span></h3>
             <span class="dates">abr. 2016 — ene. 2017</span>
           </div>
-          <p class="job-meta">Caracas, Venezuela · Antes: R&amp;D Senior Engineer (sep. 2014 — abr. 2016)</p>
+          <p class="job-meta" data-i18n-job4-meta>Caracas, Venezuela · Antes: R&D Senior Engineer (sep. 2014 — abr. 2016)</p>
           <ul>
-            <li>Dirección del equipo de desarrollo de la app móvil <b>XSales</b> bajo <b>SCRUM</b>: planificación, requisitos y entrega.</li>
-            <li>Optimización de procesos y generación de <b>informes BI</b> para empresas de retail y gran consumo.</li>
-            <li>Como R&amp;D Senior Engineer: desarrollo en <b>Java</b> con Design Patterns, SQLite, Volley y GPS tracking.</li>
+            <li data-i18n-job4-1>Dirección del equipo de desarrollo de la app móvil <b>XSales</b> bajo <b>SCRUM</b>: planificación, requisitos y entrega.</li>
+            <li data-i18n-job4-2>Optimización de procesos y generación de <b>informes BI</b> para empresas de retail y gran consumo.</li>
+            <li data-i18n-job4-3>Como R&D Senior Engineer: desarrollo en <b>Java</b> con Design Patterns, SQLite, Volley y GPS tracking.</li>
           </ul>
           <div class="tags"><span class="tag">Java</span><span class="tag">SQLite</span><span class="tag">Volley</span><span class="tag">BI</span><span class="tag">Scrum</span></div>
         </article>
 
         <article class="job reveal">
           <div class="job-top">
-            <h3>Analyst Developer <span>· Beconsult &amp; Cosméticos Rolda</span></h3>
+            <h3>Analyst Developer <span>· Beconsult & Cosméticos Rolda</span></h3>
             <span class="dates">jun. 2011 — sep. 2014</span>
           </div>
-          <p class="job-meta">Venezuela · Etapa de software de gestión, BI y ERP</p>
+          <p class="job-meta" data-i18n-job5-meta>Venezuela · Etapa de software de gestión, BI y ERP</p>
           <ul>
-            <li>Responsable técnico de herramientas de <b>gestión de software y helpdesk</b>; desarrollo sobre <b>COMPIERE ERP&amp;CRM</b> en Java.</li>
-            <li>Aplicaciones web de TI y BI en <b>ASP.NET</b> con <b>cubos OLAP</b> (SSAS), BIRT y stored procedures en SQL Server.</li>
+            <li data-i18n-job5-1>Responsable técnico de herramientas de <b>gestión de software y helpdesk</b>; desarrollo sobre <b>COMPIERE ERP&CRM</b> en Java.</li>
+            <li data-i18n-job5-2>Aplicaciones web de TI y BI en <b>ASP.NET</b> con <b>cubos OLAP</b> (SSAS), BIRT y stored procedures en SQL Server.</li>
           </ul>
           <div class="tags"><span class="tag">Java</span><span class="tag">ASP.NET</span><span class="tag">SQL Server</span><span class="tag">DB2</span><span class="tag">BIRT</span></div>
         </article>
@@ -524,12 +538,12 @@
   <section id="stack" aria-labelledby="stack-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Stack</p>
-        <h2 id="stack-h">Con qué trabajo cada día</h2>
+        <p class="eyebrow" data-i18n-sec-stack>Stack</p>
+        <h2 id="stack-h" data-i18n-stack-title>Con qué trabajo cada día</h2>
       </div>
       <div class="stack">
         <div class="stack-card reveal">
-          <h3>Móvil</h3>
+          <h3 data-i18n-stack-mobile>Móvil</h3>
           <div class="chips">
             <span class="chip hi">Kotlin</span><span class="chip hi">Jetpack Compose</span><span class="chip hi">Flutter</span>
             <span class="chip">Java</span><span class="chip">Android Jetpack</span><span class="chip">Dart</span>
@@ -537,14 +551,14 @@
           </div>
         </div>
         <div class="stack-card reveal">
-          <h3>Arquitectura</h3>
+          <h3 data-i18n-stack-arch>Arquitectura</h3>
           <div class="chips">
             <span class="chip hi">MVVM</span><span class="chip hi">DDD</span><span class="chip hi">Clean Architecture</span>
             <span class="chip">MVI</span><span class="chip">BLoC</span><span class="chip">Architecture Components</span><span class="chip">Design Patterns</span>
           </div>
         </div>
         <div class="stack-card reveal">
-          <h3>Integraciones</h3>
+          <h3 data-i18n-stack-integrations>Integraciones</h3>
           <div class="chips">
             <span class="chip hi">WebRTC</span><span class="chip hi">NFC</span>
             <span class="chip">SDKs</span><span class="chip">Bluetooth / BLE</span><span class="chip">Sunmi</span>
@@ -552,7 +566,7 @@
           </div>
         </div>
         <div class="stack-card reveal">
-          <h3>Calidad y entrega</h3>
+          <h3 data-i18n-stack-quality>Calidad y entrega</h3>
           <div class="chips">
             <span class="chip hi">UnitTest</span>
             <span class="chip">Espresso</span><span class="chip">Gradle</span><span class="chip">Git</span>
@@ -560,14 +574,14 @@
           </div>
         </div>
         <div class="stack-card reveal">
-          <h3>Datos</h3>
+          <h3 data-i18n-stack-data>Datos</h3>
           <div class="chips">
             <span class="chip">SQL</span><span class="chip">SQLite</span><span class="chip">SQL Server</span>
             <span class="chip">DB2</span><span class="chip">BIRT</span><span class="chip">BI / SSAS</span>
           </div>
         </div>
         <div class="stack-card reveal">
-          <h3>IA aplicada</h3>
+          <h3 data-i18n-stack-ai>IA aplicada</h3>
           <div class="chips">
             <span class="chip hi">AI-assisted development</span>
             <span class="chip">Agentes sobre el SDLC</span><span class="chip">Orquestación de workflows</span>
@@ -581,43 +595,43 @@
   <section id="formacion" aria-labelledby="form-h">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Formación</p>
-        <h2 id="form-h">Base técnica y de negocio</h2>
+        <p class="eyebrow" data-i18n-sec-education>Formación</p>
+        <h2 id="form-h" data-i18n-edu-title>Base técnica y de negocio</h2>
       </div>
       <div class="grid-3">
         <div class="reveal">
           <div class="edu">
             <div class="edu-item">
-              <b>MBA — Máster en Dirección y Administración de Empresas</b>
-              <span>EUDE Business School · 2013 — 2014</span>
+              <b data-i18n-edu-1-title>MBA — Máster en Dirección y Administración de Empresas</b>
+              <span data-i18n-edu-1>EUDE Business School · 2013 — 2014</span>
             </div>
             <div class="edu-item">
-              <b>Ingeniero en Informática</b>
-              <span>Universidad Católica Andrés Bello · 2006 — 2012</span>
+              <b data-i18n-edu-2-title>Ingeniero en Informática</b>
+              <span data-i18n-edu-2>Universidad Católica Andrés Bello · 2006 — 2012</span>
             </div>
             <div class="edu-item">
-              <b>Full Stack Web Development Certification</b>
-              <span>freeCodeCamp · 2016 — 2017</span>
+              <b data-i18n-edu-3-title>Full Stack Web Development Certification</b>
+              <span data-i18n-edu-3>freeCodeCamp · 2016 — 2017</span>
             </div>
           </div>
-          <p class="sub-h">Idiomas</p>
+          <p class="sub-h" data-i18n-languages>Idiomas</p>
           <div class="langs">
-            <span class="lang"><b>Español</b> · nativo</span>
-            <span class="lang"><b>Inglés</b> · profesional</span>
+            <span class="lang"><b data-i18n-lang-es>Español</b> · <span data-i18n-lang-native>nativo</span></span>
+            <span class="lang"><b data-i18n-lang-en>Inglés</b> · <span data-i18n-lang-prof>profesional</span></span>
           </div>
         </div>
         <div class="reveal">
-          <p class="sub-h" style="margin-top:0">Reconocimientos</p>
+          <p class="sub-h" style="margin-top:0" data-i18n-recognition>Reconocimientos</p>
           <ul class="list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="m8.6 13.6-1.4 7 4.8-2.6 4.8 2.6-1.4-7"/></svg><span><b>Competencia MSDE</b> — Microsoft</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="m8.6 13.6-1.4 7 4.8-2.6 4.8 2.6-1.4-7"/></svg><span><b>The AppTourism Award</b></span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="m8.6 13.6-1.4 7 4.8-2.6 4.8 2.6-1.4-7"/></svg><span data-i18n-rec-1><b>Competencia MSDE</b> — Microsoft</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.2"/><path d="m8.6 13.6-1.4 7 4.8-2.6 4.8 2.6-1.4-7"/></svg><span data-i18n-rec-2><b>The AppTourism Award</b></span></li>
           </ul>
-          <p class="sub-h">Certificaciones</p>
+          <p class="sub-h" data-i18n-certifications>Certificaciones</p>
           <ul class="list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Planificación y Administración del Tiempo</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Compiere ERP &amp; CRM</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>Curso MySQL</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span>JavaScript Road Trip Part 1 &amp; 2</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-cert-1>Planificación y Administración del Tiempo</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-cert-2>Compiere ERP & CRM</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-cert-3>Curso MySQL</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg><span data-i18n-cert-4>JavaScript Road Trip Part 1 & 2</span></li>
           </ul>
         </div>
       </div>
@@ -628,14 +642,14 @@
   <section id="contacto" class="contact" aria-labelledby="contacto-h">
     <div class="wrap">
       <div class="contact-card reveal">
-        <h2 id="contacto-h">¿Hablamos de tu próximo producto móvil?</h2>
-        <p>Abierto a roles senior de Android/Flutter y a colaboraciones técnicas. Respondo siempre, aunque sea para decir que no.</p>
+        <h2 id="contacto-h" data-i18n-contact-title>¿Hablamos de tu próximo producto móvil?</h2>
+        <p data-i18n-contact-subtitle>Abierto a roles senior de Android/Flutter y a colaboraciones técnicas. Respondo siempre, aunque sea para decir que no.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="mailto:oscid88@gmail.com?subject=Contacto%20desde%20tu%20web">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
             oscid88@gmail.com
           </a>
-          <a class="btn btn-ghost" href="CV_Oscar_Cid.pdf" download>Descargar CV (PDF)</a>
+          <a class="btn btn-ghost" href="CV_Oscar_Cid.pdf" download><span data-i18n-contact-cv>Descargar CV (PDF)</span></a>
         </div>
         <div class="contact-links">
           <a href="tel:+34689802332">
@@ -659,11 +673,325 @@
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Oscar Cid · Senior Mobile Engineer</span>
-    <span>Hecho a mano con HTML, CSS y cero frameworks.</span>
+    <span data-i18n-footer>Hecho a mano con HTML, CSS y cero frameworks.</span>
   </div>
 </footer>
 
 <script>
+  // i18n data
+  const I18N = {
+    es: {
+      "skip": "Saltar al contenido",
+      "nav-profile": "Perfil",
+      "nav-experience": "Experiencia",
+      "nav-stack": "Stack",
+      "nav-education": "Formación",
+      "nav-contact": "Contacto",
+      "hero-available": "Disponible para nuevos retos",
+      "hero-lede": "Llevo <b>+14 años</b> convirtiendo ideas en producto móvil que la gente usa a diario: punto de venta, VoIP y apps con hardware real. <b>Kotlin, Jetpack Compose y Flutter</b>, arquitecturas limpias y una obsesión sana por el rendimiento y la calidad.",
+      "hero-cv": "Descargar CV",
+      "stat-years": "años en software",
+      "stat-android": "años en Android",
+      "stat-apps": "apps publicadas",
+      "stat-mba": "visión de negocio",
+      "card-now": "Ahora",
+      "card-role": "App de punto de venta Top-Up — retail & pagos",
+      "card-1": "Flutter + BLoC sobre arquitectura hexagonal",
+      "card-2": "NFC, impresora térmica y terminales Sunmi",
+      "card-3": "Entrega continua con Git, Jira y Fastlane",
+      "card-4": "AI-assisted development y agentes en el SDLC",
+      "sec-profile": "Perfil",
+      "profile-title": "Ingeniero de producto, no solo de pantallas",
+      "profile-p1": "Empecé en <b>BI y ERP</b> (Java, SQL Server, cubos OLAP) y desde 2014 mi carrera vive en móvil. Esa mezcla me dejó una ventaja: entiendo el dato y el negocio detrás de cada pantalla, y sé cuándo una decisión técnica ahorra dinero o la cuesta.",
+      "profile-p2": "Los últimos años los he pasado donde el móvil toca el mundo físico: <b>terminales de punto de venta con NFC e impresora térmica</b>, <b>SDKs de VoIP con WebRTC</b>, beacons, BLE y trackers GPS. Perfil de <b>R&D</b>: valido hipótesis, prototipo rápido y aterrizo la solución en producción con tests, CI/CD y estándares compartidos con el equipo.",
+      "profile-p3": "Me gusta el código que se puede leer dentro de un año: <b>MVVM, MVI, Clean y DDD</b> no son moda, son la forma de que un equipo de cinco no se pise. Y ahora incorporo <b>AI-assisted development</b> y orquestación de agentes al ciclo de vida del software, con criterio y revisión.",
+      "fact-location-title": "Galicia, España",
+      "fact-location": "Ourense / A Coruña · remoto y presencial",
+      "fact-domains-title": "Retail · VoIP · movilidad",
+      "fact-domains": "productos con hardware y terceros",
+      "fact-ref-title": "Referente técnico Android",
+      "fact-ref": "arquitectura, code review y mentoría",
+      "fact-mba-title": "MBA · EUDE Business School",
+      "fact-mba": "tecnología alineada con objetivos de negocio",
+      "sec-experience": "Experiencia",
+      "exp-title": "Dónde he construido producto",
+      "exp-subtitle": "De liderar el equipo de una app de retail en Caracas a ser la referencia Android en productos de comunicaciones en Galicia.",
+      "job1-meta": "A Coruña, Galicia · Producto: Top-Up (punto de venta)",
+      "job1-1": "Desarrollo y mantenimiento de la app de <b>punto de venta Top-Up en Flutter</b>, referente del canal retail de la compañía.",
+      "job1-2": "Diseño bajo <b>arquitectura hexagonal con BLoC</b>, aislando dominio y facilitando test y evolución de features.",
+      "job1-3": "Integración del <b>hardware del terminal Sunmi</b>: NFC, impresora térmica Bluetooth y periféricos, sobre Android e iOS.",
+      "job1-4": "Desarrollo de <b>librería para integración de módulo NFC</b> en Sunmi P3H",
+      "job1-5": "Análisis de mejoras y nuevas funcionalidades junto a negocio, con <b>desarrollo asistido por IA</b>.",
+      "job2-meta": "Vigo, Galicia · Producto: comunicaciones VoIP (Collaborator)",
+      "job2-1": "Desarrollo y mantenimiento del producto de <b>comunicaciones VoIP sobre Android</b>, con foco en estabilidad de llamadas y consumo de recursos.",
+      "job2-2": "Evolución del <b>SDK</b>: nuevas capacidades, compatibilidad y API pública para integradores.",
+      "job2-3": "Implementación de <b>WebRTC</b>, sockets y componentes de arquitectura con tests unitarios.",
+      "job2-4": "Integración continua con <b>Jenkins</b> dentro de un equipo de I+D.",
+      "job3-meta": "A Coruña, Galicia · 7 apps publicadas",
+      "job3-1": "Diseño y desarrollo <b>desde cero</b> de las aplicaciones Android de la compañía, siguiendo guías de Android.",
+      "job3-2": "Apps en <b>turismo, retail y salud</b>: Pilgrim, Alkira, GetBeacon, Pedasi Paradise, SuiteApp, FittingRooms y AirCovid.",
+      "job3-3": "Retos nativos: <b>Android TV Launcher</b> propio, <b>tracking GPS</b>, beacons y BLE con SmartBand.",
+      "job3-4": "Proyectos <b>Kotlin y Java</b> con MVVM y Material Design en equipos SCRUM; introducción de <b>Flutter</b> en el stack.",
+      "job4-meta": "Caracas, Venezuela · Antes: R&D Senior Engineer (sep. 2014 — abr. 2016)",
+      "job4-1": "Dirección del equipo de desarrollo de la app móvil <b>XSales</b> bajo <b>SCRUM</b>: planificación, requisitos y entrega.",
+      "job4-2": "Optimización de procesos y generación de <b>informes BI</b> para empresas de retail y gran consumo.",
+      "job4-3": "Como R&D Senior Engineer: desarrollo en <b>Java</b> con Design Patterns, SQLite, Volley y GPS tracking.",
+      "job5-meta": "Venezuela · Etapa de software de gestión, BI y ERP",
+      "job5-1": "Responsable técnico de herramientas de <b>gestión de software y helpdesk</b>; desarrollo sobre <b>COMPIERE ERP&CRM</b> en Java.",
+      "job5-2": "Aplicaciones web de TI y BI en <b>ASP.NET</b> con <b>cubos OLAP</b> (SSAS), BIRT y stored procedures en SQL Server.",
+      "sec-stack": "Stack",
+      "stack-title": "Con qué trabajo cada día",
+      "stack-mobile": "Móvil",
+      "stack-arch": "Arquitectura",
+      "stack-integrations": "Integraciones",
+      "stack-quality": "Calidad y entrega",
+      "stack-data": "Datos",
+      "stack-ai": "IA aplicada",
+      "sec-education": "Formación",
+      "edu-title": "Base técnica y de negocio",
+      "edu-1-title": "MBA — Máster en Dirección y Administración de Empresas",
+      "edu-1": "EUDE Business School · 2013 — 2014",
+      "edu-2-title": "Ingeniero en Informática",
+      "edu-2": "Universidad Católica Andrés Bello · 2006 — 2012",
+      "edu-3-title": "Full Stack Web Development Certification",
+      "edu-3": "freeCodeCamp · 2016 — 2017",
+      "languages": "Idiomas",
+      "lang-es": "Español",
+      "lang-native": "nativo",
+      "lang-en": "Inglés",
+      "lang-prof": "profesional",
+      "recognition": "Reconocimientos",
+      "rec-1": "<b>Competencia MSDE</b> — Microsoft",
+      "rec-2": "<b>The AppTourism Award</b>",
+      "certifications": "Certificaciones",
+      "cert-1": "Planificación y Administración del Tiempo",
+      "cert-2": "Compiere ERP & CRM",
+      "cert-3": "Curso MySQL",
+      "cert-4": "JavaScript Road Trip Part 1 & 2",
+      "contact-title": "¿Hablamos de tu próximo producto móvil?",
+      "contact-subtitle": "Abierto a roles senior de Android/Flutter y a colaboraciones técnicas. Respondo siempre, aunque sea para decir que no.",
+      "contact-cv": "Descargar CV (PDF)",
+      "footer": "Hecho a mano con HTML, CSS y cero frameworks."
+    },
+    en: {
+      "skip": "Skip to content",
+      "nav-profile": "Profile",
+      "nav-experience": "Experience",
+      "nav-stack": "Stack",
+      "nav-education": "Education",
+      "nav-contact": "Contact",
+      "hero-available": "Available for new challenges",
+      "hero-lede": "I've spent <b>+14 years</b> turning ideas into mobile products people use daily: point of sale, VoIP, and apps with real hardware. <b>Kotlin, Jetpack Compose and Flutter</b>, clean architectures and a healthy obsession with performance and quality.",
+      "hero-cv": "Download CV",
+      "stat-years": "years in software",
+      "stat-android": "years in Android",
+      "stat-apps": "apps published",
+      "stat-mba": "business vision",
+      "card-now": "Now",
+      "card-role": "Top-Up POS app — retail & payments",
+      "card-1": "Flutter + BLoC on hexagonal architecture",
+      "card-2": "NFC, thermal printer and Sunmi terminals",
+      "card-3": "Continuous delivery with Git, Jira and Fastlane",
+      "card-4": "AI-assisted development and agents in the SDLC",
+      "sec-profile": "Profile",
+      "profile-title": "Product engineer, not just screens",
+      "profile-p1": "I started in <b>BI and ERP</b> (Java, SQL Server, OLAP cubes) and since 2014 my career has lived in mobile. That mix gave me an edge: I understand the data and the business behind every screen, and I know when a technical decision saves money or costs it.",
+      "profile-p2": "The last few years I've worked where mobile meets the physical world: <b>POS terminals with NFC and thermal printer</b>, <b>VoIP SDKs with WebRTC</b>, beacons, BLE and GPS trackers. <b>R&D</b> profile: I validate hypotheses, prototype fast, and land solutions in production with tests, CI/CD and shared standards with the team.",
+      "profile-p3": "I like code that can be read a year from now: <b>MVVM, MVI, Clean and DDD</b> aren't trends, they're how a team of five doesn't step on each other. And now I bring <b>AI-assisted development</b> and agent orchestration into the software lifecycle, with judgment and review.",
+      "fact-location-title": "Galicia, Spain",
+      "fact-location": "Ourense / A Coruña · remote and on-site",
+      "fact-domains-title": "Retail · VoIP · mobility",
+      "fact-domains": "products with hardware and third parties",
+      "fact-ref-title": "Android Technical Lead",
+      "fact-ref": "architecture, code review and mentoring",
+      "fact-mba-title": "MBA · EUDE Business School",
+      "fact-mba": "technology aligned with business goals",
+      "sec-experience": "Experience",
+      "exp-title": "Where I've built product",
+      "exp-subtitle": "From leading a retail app team in Caracas to becoming the Android reference for communications products in Galicia.",
+      "job1-meta": "A Coruña, Galicia · Product: Top-Up (POS)",
+      "job1-1": "Development and maintenance of the <b>Top-Up POS app in Flutter</b>, flagship of the company's retail channel.",
+      "job1-2": "Designed under <b>hexagonal architecture with BLoC</b>, isolating domain and enabling testability and feature evolution.",
+      "job1-3": "Integration of <b>Sunmi terminal hardware</b>: NFC, Bluetooth thermal printer and peripherals, on Android and iOS.",
+      "job1-4": "Development of <b>library for NFC module integration</b> on Sunmi P3H",
+      "job1-5": "Analysis of improvements and new features with business, using <b>AI-assisted development</b>.",
+      "job2-meta": "Vigo, Galicia · Product: VoIP communications (Collaborator)",
+      "job2-1": "Development and maintenance of the <b>VoIP communications product on Android</b>, focused on call stability and resource consumption.",
+      "job2-2": "<b>SDK</b> evolution: new capabilities, compatibility and public API for integrators.",
+      "job2-3": "Implementation of <b>WebRTC</b>, sockets and architecture components with unit tests.",
+      "job2-4": "Continuous integration with <b>Jenkins</b> within an R&D team.",
+      "job3-meta": "A Coruña, Galicia · 7 apps published",
+      "job3-1": "Design and development <b>from scratch</b> of the company's Android applications, following Android guidelines.",
+      "job3-2": "Apps in <b>tourism, retail and health</b>: Pilgrim, Alkira, GetBeacon, Pedasi Paradise, SuiteApp, FittingRooms and AirCovid.",
+      "job3-3": "Native challenges: custom <b>Android TV Launcher</b>, <b>GPS tracking</b>, beacons and BLE with SmartBand.",
+      "job3-4": "<b>Kotlin and Java</b> projects with MVVM and Material Design in SCRUM teams; introduction of <b>Flutter</b> into the stack.",
+      "job4-meta": "Caracas, Venezuela · Previously: R&D Senior Engineer (sep. 2014 — apr. 2016)",
+      "job4-1": "Leadership of the <b>XSales</b> mobile app development team under <b>SCRUM</b>: planning, requirements and delivery.",
+      "job4-2": "Process optimization and generation of <b>BI reports</b> for retail and FMCG companies.",
+      "job4-3": "As R&D Senior Engineer: development in <b>Java</b> with Design Patterns, SQLite, Volley and GPS tracking.",
+      "job5-meta": "Venezuela · Management software, BI and ERP stage",
+      "job5-1": "Technical lead for <b>software management and helpdesk tools</b>; development on <b>COMPIERE ERP&CRM</b> in Java.",
+      "job5-2": "IT and BI web applications in <b>ASP.NET</b> with <b>OLAP cubes</b> (SSAS), BIRT and stored procedures in SQL Server.",
+      "sec-stack": "Stack",
+      "stack-title": "What I work with daily",
+      "stack-mobile": "Mobile",
+      "stack-arch": "Architecture",
+      "stack-integrations": "Integrations",
+      "stack-quality": "Quality & Delivery",
+      "stack-data": "Data",
+      "stack-ai": "Applied AI",
+      "sec-education": "Education",
+      "edu-title": "Technical and business foundation",
+      "edu-1-title": "MBA — Master in Business Administration",
+      "edu-1": "EUDE Business School · 2013 — 2014",
+      "edu-2-title": "Computer Engineering",
+      "edu-2": "Universidad Católica Andrés Bello · 2006 — 2012",
+      "edu-3-title": "Full Stack Web Development Certification",
+      "edu-3": "freeCodeCamp · 2016 — 2017",
+      "languages": "Languages",
+      "lang-es": "Spanish",
+      "lang-native": "native",
+      "lang-en": "English",
+      "lang-prof": "professional",
+      "recognition": "Recognition",
+      "rec-1": "<b>MSDE Competency</b> — Microsoft",
+      "rec-2": "<b>The AppTourism Award</b>",
+      "certifications": "Certifications",
+      "cert-1": "Time Planning and Management",
+      "cert-2": "Compiere ERP & CRM",
+      "cert-3": "MySQL Course",
+      "cert-4": "JavaScript Road Trip Part 1 & 2",
+      "contact-title": "Let's talk about your next mobile product?",
+      "contact-subtitle": "Open to senior Android/Flutter roles and technical collaborations. I always reply, even if it's to say no.",
+      "contact-cv": "Download CV (PDF)",
+      "footer": "Handcrafted with HTML, CSS and zero frameworks."
+    }
+  };
+
+  // language toggle
+  (function () {
+    var btn = document.getElementById('langSwitch');
+    var root = document.documentElement;
+    var currentLang = 'es';
+
+    function applyLang(lang) {
+      currentLang = lang;
+      var dict = I18N[lang];
+      document.querySelectorAll('[data-i18n-skip]').forEach(function(el) { el.textContent = dict.skip; });
+      document.querySelectorAll('[data-i18n-nav-profile]').forEach(function(el) { el.textContent = dict['nav-profile']; });
+      document.querySelectorAll('[data-i18n-nav-experience]').forEach(function(el) { el.textContent = dict['nav-experience']; });
+      document.querySelectorAll('[data-i18n-nav-stack]').forEach(function(el) { el.textContent = dict['nav-stack']; });
+      document.querySelectorAll('[data-i18n-nav-education]').forEach(function(el) { el.textContent = dict['nav-education']; });
+      document.querySelectorAll('[data-i18n-nav-contact]').forEach(function(el) { el.textContent = dict['nav-contact']; });
+      document.querySelectorAll('[data-i18n-hero-available]').forEach(function(el) { el.textContent = dict['hero-available']; });
+      document.querySelectorAll('[data-i18n-hero-lede]').forEach(function(el) { el.innerHTML = dict['hero-lede']; });
+      document.querySelectorAll('[data-i18n-hero-cv]').forEach(function(el) { el.textContent = dict['hero-cv']; });
+      document.querySelectorAll('[data-i18n-stat-years]').forEach(function(el) { el.textContent = dict['stat-years']; });
+      document.querySelectorAll('[data-i18n-stat-android]').forEach(function(el) { el.textContent = dict['stat-android']; });
+      document.querySelectorAll('[data-i18n-stat-apps]').forEach(function(el) { el.textContent = dict['stat-apps']; });
+      document.querySelectorAll('[data-i18n-stat-mba]').forEach(function(el) { el.textContent = dict['stat-mba']; });
+      document.querySelectorAll('[data-i18n-card-now]').forEach(function(el) { el.textContent = dict['card-now']; });
+      document.querySelectorAll('[data-i18n-card-role]').forEach(function(el) { el.textContent = dict['card-role']; });
+      document.querySelectorAll('[data-i18n-card-1]').forEach(function(el) { el.textContent = dict['card-1']; });
+      document.querySelectorAll('[data-i18n-card-2]').forEach(function(el) { el.textContent = dict['card-2']; });
+      document.querySelectorAll('[data-i18n-card-3]').forEach(function(el) { el.textContent = dict['card-3']; });
+      document.querySelectorAll('[data-i18n-card-4]').forEach(function(el) { el.textContent = dict['card-4']; });
+      document.querySelectorAll('[data-i18n-sec-profile]').forEach(function(el) { el.textContent = dict['sec-profile']; });
+      document.querySelectorAll('[data-i18n-profile-title]').forEach(function(el) { el.textContent = dict['profile-title']; });
+      document.querySelectorAll('[data-i18n-profile-p1]').forEach(function(el) { el.innerHTML = dict['profile-p1']; });
+      document.querySelectorAll('[data-i18n-profile-p2]').forEach(function(el) { el.innerHTML = dict['profile-p2']; });
+      document.querySelectorAll('[data-i18n-profile-p3]').forEach(function(el) { el.innerHTML = dict['profile-p3']; });
+      document.querySelectorAll('[data-i18n-fact-location-title]').forEach(function(el) { el.textContent = dict['fact-location-title']; });
+      document.querySelectorAll('[data-i18n-fact-location]').forEach(function(el) { el.textContent = dict['fact-location']; });
+      document.querySelectorAll('[data-i18n-fact-domains-title]').forEach(function(el) { el.textContent = dict['fact-domains-title']; });
+      document.querySelectorAll('[data-i18n-fact-domains]').forEach(function(el) { el.textContent = dict['fact-domains']; });
+      document.querySelectorAll('[data-i18n-fact-ref-title]').forEach(function(el) { el.textContent = dict['fact-ref-title']; });
+      document.querySelectorAll('[data-i18n-fact-ref]').forEach(function(el) { el.textContent = dict['fact-ref']; });
+      document.querySelectorAll('[data-i18n-fact-mba-title]').forEach(function(el) { el.textContent = dict['fact-mba-title']; });
+      document.querySelectorAll('[data-i18n-fact-mba]').forEach(function(el) { el.textContent = dict['fact-mba']; });
+      document.querySelectorAll('[data-i18n-sec-experience]').forEach(function(el) { el.textContent = dict['sec-experience']; });
+      document.querySelectorAll('[data-i18n-exp-title]').forEach(function(el) { el.textContent = dict['exp-title']; });
+      document.querySelectorAll('[data-i18n-exp-subtitle]').forEach(function(el) { el.textContent = dict['exp-subtitle']; });
+      document.querySelectorAll('[data-i18n-job1-meta]').forEach(function(el) { el.textContent = dict['job1-meta']; });
+      document.querySelectorAll('[data-i18n-job1-1]').forEach(function(el) { el.innerHTML = dict['job1-1']; });
+      document.querySelectorAll('[data-i18n-job1-2]').forEach(function(el) { el.innerHTML = dict['job1-2']; });
+      document.querySelectorAll('[data-i18n-job1-3]').forEach(function(el) { el.innerHTML = dict['job1-3']; });
+      document.querySelectorAll('[data-i18n-job1-4]').forEach(function(el) { el.innerHTML = dict['job1-4']; });
+      document.querySelectorAll('[data-i18n-job1-5]').forEach(function(el) { el.innerHTML = dict['job1-5']; });
+      document.querySelectorAll('[data-i18n-job2-meta]').forEach(function(el) { el.textContent = dict['job2-meta']; });
+      document.querySelectorAll('[data-i18n-job2-1]').forEach(function(el) { el.innerHTML = dict['job2-1']; });
+      document.querySelectorAll('[data-i18n-job2-2]').forEach(function(el) { el.innerHTML = dict['job2-2']; });
+      document.querySelectorAll('[data-i18n-job2-3]').forEach(function(el) { el.innerHTML = dict['job2-3']; });
+      document.querySelectorAll('[data-i18n-job2-4]').forEach(function(el) { el.innerHTML = dict['job2-4']; });
+      document.querySelectorAll('[data-i18n-job3-meta]').forEach(function(el) { el.textContent = dict['job3-meta']; });
+      document.querySelectorAll('[data-i18n-job3-1]').forEach(function(el) { el.innerHTML = dict['job3-1']; });
+      document.querySelectorAll('[data-i18n-job3-2]').forEach(function(el) { el.innerHTML = dict['job3-2']; });
+      document.querySelectorAll('[data-i18n-job3-3]').forEach(function(el) { el.innerHTML = dict['job3-3']; });
+      document.querySelectorAll('[data-i18n-job3-4]').forEach(function(el) { el.innerHTML = dict['job3-4']; });
+      document.querySelectorAll('[data-i18n-job4-meta]').forEach(function(el) { el.textContent = dict['job4-meta']; });
+      document.querySelectorAll('[data-i18n-job4-1]').forEach(function(el) { el.innerHTML = dict['job4-1']; });
+      document.querySelectorAll('[data-i18n-job4-2]').forEach(function(el) { el.innerHTML = dict['job4-2']; });
+      document.querySelectorAll('[data-i18n-job4-3]').forEach(function(el) { el.innerHTML = dict['job4-3']; });
+      document.querySelectorAll('[data-i18n-job5-meta]').forEach(function(el) { el.textContent = dict['job5-meta']; });
+      document.querySelectorAll('[data-i18n-job5-1]').forEach(function(el) { el.innerHTML = dict['job5-1']; });
+      document.querySelectorAll('[data-i18n-job5-2]').forEach(function(el) { el.innerHTML = dict['job5-2']; });
+      document.querySelectorAll('[data-i18n-sec-stack]').forEach(function(el) { el.textContent = dict['sec-stack']; });
+      document.querySelectorAll('[data-i18n-stack-title]').forEach(function(el) { el.textContent = dict['stack-title']; });
+      document.querySelectorAll('[data-i18n-stack-mobile]').forEach(function(el) { el.textContent = dict['stack-mobile']; });
+      document.querySelectorAll('[data-i18n-stack-arch]').forEach(function(el) { el.textContent = dict['stack-arch']; });
+      document.querySelectorAll('[data-i18n-stack-integrations]').forEach(function(el) { el.textContent = dict['stack-integrations']; });
+      document.querySelectorAll('[data-i18n-stack-quality]').forEach(function(el) { el.textContent = dict['stack-quality']; });
+      document.querySelectorAll('[data-i18n-stack-data]').forEach(function(el) { el.textContent = dict['stack-data']; });
+      document.querySelectorAll('[data-i18n-stack-ai]').forEach(function(el) { el.textContent = dict['stack-ai']; });
+      document.querySelectorAll('[data-i18n-sec-education]').forEach(function(el) { el.textContent = dict['sec-education']; });
+      document.querySelectorAll('[data-i18n-edu-title]').forEach(function(el) { el.textContent = dict['edu-title']; });
+      document.querySelectorAll('[data-i18n-edu-1-title]').forEach(function(el) { el.textContent = dict['edu-1-title']; });
+      document.querySelectorAll('[data-i18n-edu-1]').forEach(function(el) { el.textContent = dict['edu-1']; });
+      document.querySelectorAll('[data-i18n-edu-2-title]').forEach(function(el) { el.textContent = dict['edu-2-title']; });
+      document.querySelectorAll('[data-i18n-edu-2]').forEach(function(el) { el.textContent = dict['edu-2']; });
+      document.querySelectorAll('[data-i18n-edu-3-title]').forEach(function(el) { el.textContent = dict['edu-3-title']; });
+      document.querySelectorAll('[data-i18n-edu-3]').forEach(function(el) { el.textContent = dict['edu-3']; });
+      document.querySelectorAll('[data-i18n-languages]').forEach(function(el) { el.textContent = dict['languages']; });
+      document.querySelectorAll('[data-i18n-lang-es]').forEach(function(el) { el.textContent = dict['lang-es']; });
+      document.querySelectorAll('[data-i18n-lang-native]').forEach(function(el) { el.textContent = dict['lang-native']; });
+      document.querySelectorAll('[data-i18n-lang-en]').forEach(function(el) { el.textContent = dict['lang-en']; });
+      document.querySelectorAll('[data-i18n-lang-prof]').forEach(function(el) { el.textContent = dict['lang-prof']; });
+      document.querySelectorAll('[data-i18n-recognition]').forEach(function(el) { el.textContent = dict['recognition']; });
+      document.querySelectorAll('[data-i18n-rec-1]').forEach(function(el) { el.innerHTML = dict['rec-1']; });
+      document.querySelectorAll('[data-i18n-rec-2]').forEach(function(el) { el.innerHTML = dict['rec-2']; });
+      document.querySelectorAll('[data-i18n-certifications]').forEach(function(el) { el.textContent = dict['certifications']; });
+      document.querySelectorAll('[data-i18n-cert-1]').forEach(function(el) { el.textContent = dict['cert-1']; });
+      document.querySelectorAll('[data-i18n-cert-2]').forEach(function(el) { el.textContent = dict['cert-2']; });
+      document.querySelectorAll('[data-i18n-cert-3]').forEach(function(el) { el.textContent = dict['cert-3']; });
+      document.querySelectorAll('[data-i18n-cert-4]').forEach(function(el) { el.textContent = dict['cert-4']; });
+      document.querySelectorAll('[data-i18n-contact-title]').forEach(function(el) { el.textContent = dict['contact-title']; });
+      document.querySelectorAll('[data-i18n-contact-subtitle]').forEach(function(el) { el.textContent = dict['contact-subtitle']; });
+      document.querySelectorAll('[data-i18n-contact-cv]').forEach(function(el) { el.textContent = dict['contact-cv']; });
+      document.querySelectorAll('[data-i18n-footer]').forEach(function(el) { el.textContent = dict['footer']; });
+
+      // update html lang
+      root.lang = lang;
+      // update button
+      btn.setAttribute('aria-pressed', lang === 'en');
+      btn.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+      document.querySelectorAll('[data-lang-es]').forEach(function(el) { el.style.display = lang === 'es' ? 'inline' : 'none'; });
+      document.querySelectorAll('[data-lang-en]').forEach(function(el) { el.style.display = lang === 'en' ? 'inline' : 'none'; });
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+
+    // init from localStorage
+    var savedLang = null;
+    try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+    if (savedLang && I18N[savedLang]) {
+      applyLang(savedLang);
+    }
+
+    btn.addEventListener('click', function () {
+      var next = currentLang === 'es' ? 'en' : 'es';
+      applyLang(next);
+    });
+  })();
+
   // theme toggle
   (function () {
     var btn = document.getElementById('theme');
