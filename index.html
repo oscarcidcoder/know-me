@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +20,7 @@
     document.documentElement.classList.add('js');
     var saved = null;
     try { saved = localStorage.getItem('theme'); } catch (e) {}
-    var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.dataset.theme = saved || sys;
+    document.documentElement.dataset.theme = saved || 'dark';
   })();
 </script>
 <style>
@@ -342,7 +341,7 @@
       <a href="#formacion" data-i18n-nav-education>Formación</a>
       <a href="#contacto" data-i18n-nav-contact>Contacto</a>
     </div>
-    <button class="lang-switch" id="langSwitch" type="button" aria-label="Cambiar idioma" aria-pressed="false">
+    <button class="lang-switch" id="langSwitch" type="button" aria-label="Cambiar a español" aria-pressed="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       <span data-lang-en>EN</span><span data-lang-es style="display:none">ES</span>
     </button>
@@ -979,11 +978,13 @@
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
 
-    // init from localStorage
+    // init from localStorage, default to English
     var savedLang = null;
     try { savedLang = localStorage.getItem('lang'); } catch (e) {}
     if (savedLang && I18N[savedLang]) {
       applyLang(savedLang);
+    } else {
+      applyLang('en');
     }
 
     btn.addEventListener('click', function () {
